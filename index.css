@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+
+:root {
+    --invalidBorder: #ff4747;
+    --invalidColor: #ff474742;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    background-color: #1d2b3a;
+    color: white;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+}
+
+h1 + .tempDiv {
+    margin-top: 2.5rem;
+}
+
+.tempDiv + .radioGroup {
+    margin-top: 2.5rem;
+}
+
+input {
+    border-radius: 5px;
+    padding: 8px 24px;
+    text-align: center;
+    margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 1rem;
+    background-color: #1d2b3a;
+    border: 1px solid white;
+}
+
+.radioGroup input {
+    display: none;
+}
+
+.radioGroup input + label::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 3px;
+}
+
+.radioGroup input:checked + label::before {
+    background-color: rgba(255, 255, 255, 0);
+    border: 4px solid salmon;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+input:focus {
+    border: 1px solid salmon;
+    outline: none;
+    color: salmon;
+}
+
+input.required:invalid {
+    background-color: var(--invalidColor);
+    border-color: var(--invalidBorder);
+}
+
+button {
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 0px;
+    padding: 15px 20px;
+    margin: 60px auto;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: 100ms ease-in;
+}
+
+button:hover {
+    background-color: salmon;
+    transition: 100ms ease-in;
+}
+
+@media screen and (max-width: 320px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input {
+        padding: 4px 12px;
+    }
+}
