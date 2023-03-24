@@ -82,6 +82,10 @@ input.required:invalid {
     border-color: var(--invalidBorder);
 }
 
+input.required::placeholder {
+    color: var(--invalidColor);
+}
+
 button {
     margin: 20px auto;
     background-color: white;
