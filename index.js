@@ -1,30 +1,36 @@
-let temp, tempConvertida, prefix;
-const resultado = document.getElementById("resultText");
+const resultado = document.getElementById("resultText")
+const fahrenheit = document.querySelector("#fahrenheitOption")
+const celsius = document.querySelector("#celsiusOption")
+const tempInput = document.querySelector("#tempInput")
+const submit = document.querySelector("#submitButton")
 
-document.getElementById("submitButton").onclick = function(){
+submit.onclick = function(){
 
-    document.getElementById("tempField").classList.add("required");
+    tempInput.classList.add("required");
 
-    temp = Number(document.getElementById("tempField").value);
+    let tempConvertida;
+    let temp = Number(tempInput.value);
 
     try{
-        if(isNaN(temp) || temp == "") throw "ERRO: Número inválido"
+        if(isNaN(temp) || temp == "") throw new Error("Número inválido");
 
-        if(document.getElementById("celsiusOption").checked){
-            prefix = "ºC";
-            tempConvertida = Math.round(((temp - 32)/1.8)*10)/10; // temperatura em celsius (formatado como X.XXºC)
+        if(celsius.checked){
+            tempConvertida = Math.round(((temp - 32)/1.8)*10)/10 + " ºC"; // temperatura em celsius (formatado como X.XXºC)
         } 
         
-        else if(document.getElementById("fahrenheitOption").checked){
-            prefix = "ºF";
-            tempConvertida = Math.round((temp*1.8 + 32)*10)/10; // temperatura em fahrenheit (formatado como X.XXºC)
+        else if(fahrenheit.checked){
+            tempConvertida = Math.round((temp*1.8 + 32)*10)/10 + " ºF"; // temperatura em fahrenheit (formatado como X.XXºC)
         }
 
-        resultado.innerHTML = `<strong>RESULTADO:</strong> ${tempConvertida} ${prefix}`;
+        else {
+            throw new Error("Nenhuma opção selecionada");
+        }
+
+        resultado.innerHTML = `<strong>RESULTADO:</strong> ${tempConvertida}`;
     }
     catch(error) {
-        console.log(error)
-        resultado.innerHTML = "\u26A0 <strong>ENTRADA INVÁLIDA</strong> \u26A0";
+        console.error(error);
+        resultado.innerHTML = error;
     }
 
 }
